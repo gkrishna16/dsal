@@ -1,0 +1,39 @@
+/* header {
+	background: #41d3bd;
+}
+.main-content {
+	background: #de6449;
+}
+.sidebar {
+	background: #407899;
+}
+footer {
+	background: #694d75;
+}
+
+body {
+	display: grid;
+	grid-template-columns: 1.5em minmax(400px, 650px) minmax(200px, 350px) 1.5em;
+	grid-template-areas:
+		'header header header header header'
+		'...... main   side   ...... ......'
+		'footer footer footer ...... ......';
+}
+
+header {
+	grid-area: header;
+}
+footer {
+	/* grid-column: 1/5; */
+	grid-area: footer;
+}
+
+.main-content {
+	/* grid-column: 3/4; */
+	grid-area: main;
+}
+
+.sidebar {
+	/* grid-column: 3/4; */
+	grid-area: side;
+} */
