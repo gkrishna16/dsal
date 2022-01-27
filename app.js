@@ -1,80 +1,25 @@
-// function factorialize(num) {
-// if (num === 0 || num === 1) return 1;
-// 	for (var i = num - 1; i >= 1; i--) {
-// 		num *= i;
-// 	}
-// 	return num;
-// }
+// const findLongestWord = (str) => {
+// 	let longest = 0;
+// 	let longArr = [];
 
-// function factorialize(num) {
-// 	if (num === 0 || num === 1) {
-// 		return num;
-// 	}
-// 	for (let i = num - 1; i >= 1; i--) {
-// 		num = num * i;
-// 	}
+// 	let splitStr = str.split(' ');
 
-// 	return num;
-// }
-
-// let result = factorialize(1);
-// console.log(result);
-
-// const fs = require('fs');
-
-// const filePromise = require('./readFilePromise');
-
-// const inPromise = filePromise('index.html');
-
-// if (true) {
-// 	inPromise.then((result) => {
-// 		try {
-// 			console.log(result);
-// 		} catch (error) {
-// 			console.log(error);
+// 	for (let i = 0; i < splitStr.length; i++) {
+// 		if (splitStr[i].length > longest) {
+// 			longest = splitStr[i].length;
+// 			longArr.push(splitStr[i]);
 // 		}
-// 	});
-// }
-
-// const printResults = (err, result) => {
-// 	console.log(result);
+// 	}
+// 	return longArr.pop();
 // };
 
-// fs.readFile(
-// 	'index.html',
-// 	{
-// 		encoding: 'utf-8',
-// 	},
-// 	(err, result) => {
-// 		console.log(result);
-// 	},
-// );
+const findLongestWord = (str) => {
+	let splitStr = str.split(' ');
+	let longest = splitStr.sort((a, b) => {
+		return b.length - a.length;
+	});
 
-// const fs = require('fs');
+	return longest[0];
+};
 
-// const readfilePromise = require('./readFilePromise');
-
-// const readFileResult = readfilePromise('random.txt');
-
-// if (true) {
-// 	console.log(readFileResult.then((result) => console.log(result));
-// }
-
-// const printResults = (err, result) => {
-// 	// console.log(err);
-// 	console.log(`the function called.`);
-// 	console.log(result);
-// };
-
-// fs.readFile('random.txt', { encoding: 'utf-8' }, printResults);
-
-// const myName = 'Gopal';
-
-// // console.log(myName.split('').reverse().join(''));
-// console.log(myName.charAt(0).toLowerCase() + myName.split());
-
-let a = ['x', 'y', 'z'];
-
-let b = ['a', 'b', 'c', ...a, '1'];
-
-console.log(b);
+console.log(findLongestWord('gopal is the most powerful.'));
