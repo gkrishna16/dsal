@@ -31,9 +31,10 @@ public class LL {
         }
         Node current = head;
         while (current != null) {
-            System.out.println(current.data);
+            System.out.print(current.data + " -> ");
             current = current.next;
         }
+        System.out.println();
     }
 
     int getSize() {
@@ -109,7 +110,8 @@ public class LL {
         ll.Print();
         ll.insertAt(5, 3);
         ll.Print();
-        System.out.println(ll.getSize());
+        System.out.println("The size of linked list " + ll.getSize()+".");
+
     }
 }
 
