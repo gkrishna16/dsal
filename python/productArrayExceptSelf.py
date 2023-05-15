@@ -1,41 +1,21 @@
-# class Solution:
-#     def productOfSelfExceptSelf(self, nums):
+class Solution:
+    def productOfSelfExceptSelf(self, nums):
+        answer = [1] * (len(nums))
+
+        leftPrefix = 1
+
+        for i in range(len(nums)):
+            answer[i] = leftPrefix
+            leftPrefix *= nums[i]
+        # print(answer)
+
+        rightPrefix = 1
+        for j in range(len(nums) - 1, -1, -1):
+            answer[j] *= rightPrefix
+            rightPrefix *= nums[j]
+        # print(answer)
+        return answer
 
 
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-
-class LinkedList:
-    def __init__(self):
-        self.head = None
-
-    def append(self, val):
-        newNode = Node(val)
-        if self.head is None:
-            self.head = newNode
-            return
-        current = self.head
-        while current.next != None:
-            current = current.next
-        current.next = newNode
-
-    def print(self):
-        current = self.head
-        if current is None:
-            print("the head is empty.")
-            return
-
-        while current is not None:
-            print(current.data, end=" -> ")
-            current = current.next
-        print('')
-
-
-ll = LinkedList()
-ll.append(100)
-ll.append(200)
-ll.append(300)
-ll.print()
+sol = Solution()
+print(sol.productOfSelfExceptSelf([1, 2, 3, 4]))
