@@ -244,23 +244,128 @@
 
 // Recursion
 
-function recur(n) {
-  if (n === 0) {
-    return 1;
-  } else {
-    return n * recur(n - 1);
+// let arrMemo = new Array(51).fill(-1);
+// console.log(arrMemo);
+
+// function factorial(n) {
+//   if (n === 0) {
+//     return 1;
+//   }
+
+//   return n * factorial(n - 1);
+// }
+
+// let value = factorial(5);
+// console.log(value);
+
+// function fib(n) {
+//   if (n === 0 || n === 1) {
+//     return 1;
+//   }
+
+//   if (arrMemo[n] != -1) {
+//     return arrMemo[n];
+//   }
+
+//   arrMemo[n] = fib(n - 1) + fib(n - 2);
+//   return arrMemo[n];
+// }
+
+// let fibValue = fib(100);
+// let fibValue2 = fib(100);
+
+// console.log(fibValue);
+// console.log(fibValue2);
+// console.log(arrMemo);
+
+// order of n algorithm.
+
+// function count(n) {
+//   if (n < 1) {
+//     return 0;
+//   }
+//   // console.log(n);
+//   return count(n - 1);
+//   // console.log(n);
+// }
+
+// let val = count(5);
+// console.log(val);
+// let arr = [1, 2, 3, 4, 4];
+// let mySet = new Set(arr);
+// console.log(mySet);
+
+// function merge_Arrays(left_sub_array, right_sub_array) {
+//   let array = [];
+//   while (left_sub_array.length && right_sub_array.length) {
+//     if (left_sub_array[0] < right_sub_array[0]) {
+//       array.push(left_sub_array.shift());
+//     } else {
+//       array.push(right_sub_array.shift());
+//     }
+//   }
+//   return [...array, ...left_sub_array, ...right_sub_array];
+// }
+// function merge_sort(unsorted_Array) {
+//   const middle_index = unsorted_Array.length / 2;
+//   if (unsorted_Array.length < 2) {
+//     return unsorted_Array;
+//   }
+//   const left_sub_array = unsorted_Array.splice(0, middle_index);
+//   return merge_Arrays(merge_sort(left_sub_array), merge_sort(unsorted_Array));
+// }
+// unsorted_Array = [39, 28, 44, 4, 10, 83, 11];
+
+function isAnagram(s, t) {
+  if (s.length !== t.length) {
+    return false;
   }
+
+  const sCount = {};
+  const tCount = {};
+  const N = s.length;
+
+  for (let i = 0; i < N; i++) {
+    if (!sCount[s[i]]) sCount[s[i]] = 0;
+    if (!tCount[t[i]]) tCount[t[i]] = 0;
+
+    sCount[s[i]]++;
+    tCount[t[i]]++;
+  }
+
+  console.log(s, ":", sCount);
+  console.log(t, ":", tCount);
+
+  for (let ch in sCount) {
+    if (sCount[ch] !== tCount[ch]) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
-let value = recur(5);
-console.log(value);
-
-function fib(n) {
-  if (n === 0 || n === 1) {
-    return 1;
+function isAngrm2(s, t) {
+  if (s.length !== t.length) {
+    return false;
   }
-  return fib(n - 1) + fib(n - 2);
+  const count = {};
+  console.log(count);
+
+  for (let i = 0; i < s.length; i++) {
+    if (!count[s[i]]) count[s[i]] = 0;
+    if (!count[t[i]]) count[t[i]] = 0;
+    count[s[i]]++;
+    count[t[i]]--;
+    console.log(count);
+  }
+
+  for (let ch in count) {
+    if (count[ch] !== 0) return false;
+  }
+  console.log(count);
+  return true;
 }
 
-let fibValue = fib(3);
-console.log(fibValue);
+let ansAngrm = isAngrm2(`rat`, "tar");
+console.log(ansAngrm);
