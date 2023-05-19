@@ -1,26 +1,4 @@
 function validSudoku(board) {
-  // let st = new Set();
-  // for (let i = 0; i < 9; i++) {
-  //   for (let j = 0; j < 9; j++) {
-  //     let num = board[i][j];
-  //     if (num === ".") {
-  //       continue;
-  //     }
-  //     let boxNum = 3 * Math.floor(i / 3) + Math.floor(j / 3);
-  //     let row = "the row has " + i;
-  //     let col = "the col has " + j;
-  //     let box = `box: ${boxNum}, value ${num}`;
-  //     if (st.has(row) || st.has(col) || st.has(box)) {
-  //       return false;
-  //     }
-  //     st.add(row);
-  //     st.add(col);
-  //     st.add(box);
-  //   }
-  // }
-
-  // return true;
-
   const set = new Set();
 
   for (let i = 0; i < 9; i++) {
@@ -33,10 +11,7 @@ function validSudoku(board) {
       const row = `row: ${i}, value ${num}`;
       const col = `col: ${j}, value ${num}`;
       const box = `box: ${boxNum}, value ${num}`;
-      // const boxNum = 3 * Math.floor(i / 3) + Math.floor(j / 3);
-      // const row = "the row has " + i;
-      // const col = "the col has " + j;
-      // const box = `box: ${boxNum}, value ${num}`;
+
       if (set.has(row) || set.has(col) || set.has(box)) {
         return false;
       }

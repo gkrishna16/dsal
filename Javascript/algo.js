@@ -316,34 +316,7 @@
 // }
 // unsorted_Array = [39, 28, 44, 4, 10, 83, 11];
 
-function isAnagram(s, t) {
-  if (s.length !== t.length) {
-    return false;
-  }
-
-  const sCount = {};
-  const tCount = {};
-  const N = s.length;
-
-  for (let i = 0; i < N; i++) {
-    if (!sCount[s[i]]) sCount[s[i]] = 0;
-    if (!tCount[t[i]]) tCount[t[i]] = 0;
-
-    sCount[s[i]]++;
-    tCount[t[i]]++;
-  }
-
-  console.log(s, ":", sCount);
-  console.log(t, ":", tCount);
-
-  for (let ch in sCount) {
-    if (sCount[ch] !== tCount[ch]) {
-      return false;
-    }
-  }
-
-  return true;
-}
+ function isAnagram () {}
 
 function isAngrm2(s, t) {
   if (s.length !== t.length) {

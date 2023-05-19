@@ -3,29 +3,57 @@
 using namespace std;
 
 
-bool validAnagrams(string s , string t) 
-{
-    unordered_map<string, int> ms ,mt;
-    if (s.length() != t.length())
-{
-    return false;
-}
-
-for (int i = 0; i < s.length(); i++) {
-    ms[s[i]]++;
-    mt[t[i]]++;
-}
-
-for (auto x :s) {
-    if (ms[x]!= mt[x])
+ bool isAnagram (string a , string b)
+ 
+ {
+    if (a.length() != b.length()){
         return false;
+    }
+
+    unordered_map<int, int> aMap, bMap;
+    for (int i = 0; i < a.length();i++)
+    {
+        if (aMap.find(a[i]) == aMap.end()){aMap[a[i]] = 0;}
+            if (bMap.find(b[i]) == bMap.end())
+              {  bMap[b[i]] = 0;}
+                    aMap[a[i]]++;
+            bMap[b[i]]++;
+    }
+
+ 
+ }
+
+
+void Frequency (vector<int> & arr, int n)
+{
+    unordered_map<int, int> map;
+    for (int i = 0; i < n;i++)
+    {
+        map[arr[i]]++;
+    };
+
+    // Traverse through map and print frequencies
+    for (auto x : map)
+    {
+        cout << x.first << " : " << x.second << endl;
+    }
 }
 
-return true;
-}
+int main() {
 
-int main () {
+    vector<int> arr;
+   int Arr[] = {10, 5, 10, 15, 10, 5};
 
+   for (int i = 0; i < sizeof(Arr) / sizeof(Arr[0]; i++))
+   {
+        arr.push_back(Arr[i]);
+   }
+        // int n = sizeof(arr) / sizeof(arr[0]);
 
-return 1;
+   Frequency(arr, arr.size());
+
+   // vector<int> vc = {1, 2, 4};
+   // cout << vc[1] <<endl;
+
+   return 1;
 }

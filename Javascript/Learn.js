@@ -76,9 +76,32 @@
 
 // recur2("sarb");
 
-function add() {
-  console.log(`bond`);
-  return `name is bond.`;
-}
+// function bubbleSort(nums) {
+//   let flag = true;
 
-add();
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] > nums[i + 1]) {
+//       let temp = nums[i];
+//       nums[i] = nums[i + 1];
+//       nums[i + 1] = temp;
+//       flag = false;
+//     }
+//   }
+
+//   if (flag === false) {
+//     bubbleSort(nums);
+//   }
+
+//   return nums;
+// }
+
+// let val = bubbleSort([5, 4, 3, 2, 1]);
+// console.log(val);
+// let arr = [`one`, `two`, `three`];
+// console.log(arr.toString().split(" "));
+
+let ob = { 1: `one `, 2: `two` };
+console.log(ob);
+
+let ob1 = Object.entries(ob);
+console.log(ob1);
