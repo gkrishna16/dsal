@@ -100,8 +100,71 @@
 // let arr = [`one`, `two`, `three`];
 // console.log(arr.toString().split(" "));
 
-let ob = { 1: `one `, 2: `two` };
-console.log(ob);
+// let ob = { 1: `one `, 2: `two` };
+// console.log(ob);
 
-let ob1 = Object.entries(ob);
-console.log(ob1);
+// let ob1 = Object.entries(ob);
+// console.log(ob1);
+
+// function closr(n) {
+//   let currentVariable = n - 1;
+//   return function () {
+//     currentVariable += 1;
+//     return currentVariable;
+//   };
+// }
+// let val = closr(5);
+// val();
+// val();
+// console.log(val());
+
+// var createCounter = function (n) {
+//   --n;
+//   return function () {
+//     return ++n;
+//   };
+// };
+
+// function incr(n) {
+//   return ++n;
+// }
+
+// console.log(incr(1));
+// console.log(incr(2));
+
+// [1,2,3,4]
+// {1:"1", 2:"2"....}
+// const hashed = {};
+// function hashIt(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     hashed[arr[i]] = i;
+//   }
+
+//   return hashed;
+// }
+
+// let sol = hashIt([10, 30, 50, 60]);
+// console.log(sol);
+
+// const guessWhat = () => {
+//   let result = x;
+
+//   return result;
+// };
+
+// console.log(guessWhat());
+
+//Task 1
+
+function twoSum(arr, target) {}
+
+const printer = () => {
+  let y = 100;
+  for (let i = 0; i < 1000; i++) {
+    x = y + ",\n";
+  }
+
+  return x;
+};
+
+console.log(printer());

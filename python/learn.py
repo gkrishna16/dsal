@@ -77,8 +77,25 @@
 # print(inp)
 # print(numb)
 
-nums = [10, 20, 30, 40]
+# nums = [10, 20, 30, 40]
 
-for i in range(len(nums) - 1, -1, -1):
-    print(f'{i} - index')
-    print(nums[i])
+# for i in range(len(nums) - 1, -1, -1):
+#     print(f'{i} - index')
+#     print(nums[i])
+
+
+def bubbleSort(nums):
+    for i in range(len(nums)):
+        flag = False
+        for j in range(len(nums) - 1):
+            if nums[j] > nums[j+1]:
+                nums[j], nums[j+1] = nums[j+1], nums[j]
+                flag = True
+        if flag == False:
+            break
+    return nums
+
+
+arr = [4, 3, 25, 1]
+val = bubbleSort(arr)
+print(val)

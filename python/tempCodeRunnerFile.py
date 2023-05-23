@@ -1,26 +1,23 @@
 class Solution:
-    def productOfSelfExceptSelf(self, nums):
-        answer = [1] * (len(nums))
-        prefix = 1
+    def topKFrequent(self, nums, k):
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
 
-        for i in range(1, len(nums) - 1):
-            answer[i] *= nums[i - 1]
-            # answer[i] = prefix
-            # prefix *= nums[i]
-        print(answer)
+        for num in nums:
+            count[num] = 1 + count.get(num, 0)
 
-        postfix = 1
-        for j in range(len(nums) - 1, 0, -1):
-            answer[j] *= postfix
-            postfix *= nums[j]
+        for n, c in count.items():
+            freq[c].append(n)
 
-        return answer
+        res = []
+        for i in range(len(freq) - 1, -1, -1):
+            for val in freq[i]:
+                res.append(val)
+                if len(res) == k:
+                    return res
 
 
+O(n)
 sol = Solution()
-print(sol.productOfSelfExceptSelf([1, 2, 3, 4]))
-
-# res = [1, 2, 3, 4, 5]
-# for i in range(len(res) - 1, 0, -1):
-#     print(res[i])
-#     print('---')
+val = sol.topKFrequent([1, 1, 1, 2, 2, 3], 2)
+print(val)

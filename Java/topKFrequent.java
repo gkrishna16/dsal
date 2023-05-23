@@ -1,21 +1,17 @@
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class topKFrequent {
 
-    public static void topKF(int[] nums) {
+    public List<List<String>>  topKF(String[] strs) {
+        Map<String, List<String>> groups = new HashMap<>();
 
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        ArrayList<ArrayList<Integer>> Al = new ArrayList<>();
+        for (String str : strs) {
 
-        for ( int i = 0;i< nums.length;i++){
-            Al.add(new ArrayList<>());
         }
 
-        for (int i : nums) {
-            hm.put(i, hm.getOrDefault(i, 0) + 1);
-        }
 
+        return;
      
     } 
 

@@ -3,11 +3,14 @@ class Solution {
     let res = {};
 
     for (let str of arr) {
+      // Everytime a new count is being created.
       let count = new Array(26).fill(0);
+      console.log(count);
 
       for (let i = 0; i < str.length; i++) {
         count[str.charCodeAt(i) - 5] += 1;
       }
+      console.log(count);
       if (res[count]) {
         res[count].push(str);
       } else {
