@@ -3,7 +3,7 @@ function longestSubStrng(nums) {
   let longest = 0;
 
   for (let num of nums) {
-    if (!set.has(num - 1)) {
+    if (set.has(num - 1) === false) {
       let length = 0;
       console.log(set.has(num - 1));
 
