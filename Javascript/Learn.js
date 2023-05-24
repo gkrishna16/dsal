@@ -156,15 +156,25 @@
 
 //Task 1
 
-function twoSum(arr, target) {}
+// function twoSum(arr, target) {}
 
-const printer = () => {
-  let y = 100;
-  for (let i = 0; i < 1000; i++) {
-    x = y + ",\n";
-  }
+// const printer = () => {
+//   let y = 100;
+//   for (let i = 0; i < 1000; i++) {
+//     x = y + ",\n";
+//   }
 
-  return x;
-};
+//   return x;
+// };
 
-console.log(printer());
+// console.log(printer());
+
+let str = "A man, a plan, a canal: Panama";
+
+console.log(
+  str
+    .split("")
+    .reverse()
+    .join("")
+    .replace(/^\s+|\s+$/gm, "")
+);
