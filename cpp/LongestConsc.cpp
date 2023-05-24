@@ -8,15 +8,14 @@ void LongestSubstrng(vector<int> & arr)
     int longest = 0;
     set<int> st;
 
-    // for ()
-
     for (auto& s: arr){
         st.insert(s);
     }
 
     for (auto & t : st){
-        cout << t << endl;
+        cout << t << " -> ";
     }
+    cout << endl;
 }
 
 int main(){
