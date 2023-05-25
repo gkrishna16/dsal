@@ -84,18 +84,23 @@
 #     print(nums[i])
 
 
-def bubbleSort(nums):
-    for i in range(len(nums)):
-        flag = False
-        for j in range(len(nums) - 1):
-            if nums[j] > nums[j+1]:
-                nums[j], nums[j+1] = nums[j+1], nums[j]
-                flag = True
-        if flag == False:
-            break
-    return nums
+# def bubbleSort(nums):
+#     for i in range(len(nums)):
+#         flag = False
+#         for j in range(len(nums) - 1):
+#             if nums[j] > nums[j+1]:
+#                 nums[j], nums[j+1] = nums[j+1], nums[j]
+#                 flag = True
+#         if flag == False:
+#             break
+#     return nums
 
 
-arr = [4, 3, 25, 1]
-val = bubbleSort(arr)
-print(val)
+# arr = [4, 3, 25, 1]
+# val = bubbleSort(arr)
+# print(val)
+
+
+numbs = [1, 2, 23, 45]
+for i, j in enumerate(numbs):
+    print(i, j)

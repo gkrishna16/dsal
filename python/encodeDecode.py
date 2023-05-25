@@ -45,9 +45,26 @@ class Solution:
             i = j + 1 + length
         return res
 
+    # def encode(self, strngs):
+    #     res = ''
+    #     for strn in strngs:
+    #         res += '#' + str(len(strn)) + strn
+    #     return res
+
+    # def decode(self, strng):
+    #     i, res = 0, []
+    #     while i < len(strng):
+    #         j = i
+    #         while strng[j] != '#':
+    #             j = j + 1
+    #         length = int(strng[j - 1])
+    #         res.append(strng[j+1:j+1+length])
+    #         i = j + 1 + length
+    #     return res
+
 
 sol = Solution()
 
 val = sol.encode(['gopal', 'krishan'])
 print(val)
-print(sol.decode(val), len(sol.decode(val)))
+print(sol.decode(val))

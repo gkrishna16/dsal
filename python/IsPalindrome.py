@@ -8,4 +8,5 @@ class Solution:
 
         return res == res[::-1]
 
-print(Solution().isPalindrm('aca'))
+
+print(Solution().isPalindrm('acad'))
