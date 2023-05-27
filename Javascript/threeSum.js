@@ -1,7 +1,8 @@
 function threeSum(nums) {
   nums.sort();
 
-  console.log(nums);
+  return nums;
 }
 
 let val = threeSum([4, 3, 2, 1]);
+console.log(val);

@@ -5,7 +5,7 @@ function productExceptSelf(nums) {
   for (let i = 1; i < nums.length; i++) {
     answer[i] = nums[i - 1] * answer[i - 1];
   }
-  // console.log(answer);
+  console.log(answer);
   // create right side of array and multiply right and left both to update the final array
   let leftPrefix = 1;
   for (let j = nums.length - 1; j >= 0; j--) {

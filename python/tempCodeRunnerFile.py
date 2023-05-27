@@ -1,11 +1,23 @@
-def decode(self, strn):
-        res, i = [], 0
+class Solution:
+    def productOfSelfExceptSelf(self, nums):
+        # answer = [1] * (len(nums))
+        # prefix = 1
+        answer = [1] * (len(nums))
+        print(answer)
 
-        while i < len(strn):
-            j = i
-            while strn[j] != '#':
-                j = j + 1
-            length = int(strn[j - 1])
-            res.append(strn[j+1:j+1 + length])
-            i = j + 1 + length
-        return res
+        for i in range(1, len(nums)):
+            answer[i] = answer[i - 1] * nums[i-1]
+            print(i)
+
+        print(f"{answer} after first loop")
+
+        postfix = 1
+        for j in range(len(nums) - 1, -1, -1):
+            answer[j] *= postfix
+            postfix *= nums[j]
+
+        return answer
+
+
+sol = Solution()
+print(sol.productOfSelfExceptSelf([1, 2, 3, 4]))
