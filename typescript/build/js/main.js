@@ -3,6 +3,9 @@ function threeSum(nums) {
     nums.sort();
     let res = [];
     for (let i = 0; i < nums.length; i++) {
+        // if (nums[i] > 0) {
+        //   break;
+        // }
         if (i > 0 && nums[i] === nums[i - 1]) {
             continue;
         }
@@ -17,7 +20,7 @@ function threeSum(nums) {
                 l++;
             }
             else {
-                res.push([[nums[i], nums[l], nums[r]]]);
+                res.push([nums[i], nums[l], nums[r]]);
                 l++;
                 while (nums[l] === nums[l - 1] && l < r) {
                     l++;
@@ -27,5 +30,5 @@ function threeSum(nums) {
     }
     return res;
 }
-let val = threeSum([-1, 0, 1, 2, -1, -4]);
-console.log(val);
+// let val = threeSum([-1, 0, 1, 2, -1, -4]);
+// console.log(val);
