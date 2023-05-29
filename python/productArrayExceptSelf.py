@@ -17,6 +17,8 @@ class Solution:
             postfix *= nums[j]
 
         return answer
+    
+    def TwoSum2()
 
 
 sol = Solution()

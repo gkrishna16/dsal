@@ -40,6 +40,7 @@ class Solution:
             j = i
             while strn[j] != '#':
                 j = j + 1
+                # j will stop at where is finds #
             length = int(strn[j - 1])
             res.append(strn[j+1:j+1 + length])
             i = j + 1 + length
