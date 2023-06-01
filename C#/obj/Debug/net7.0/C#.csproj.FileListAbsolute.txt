@@ -1,0 +1,15 @@
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/bin/Debug/net7.0/C#
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/bin/Debug/net7.0/C#.deps.json
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/bin/Debug/net7.0/C#.runtimeconfig.json
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/bin/Debug/net7.0/C#.dll
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/bin/Debug/net7.0/C#.pdb
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/C#.csproj.AssemblyReference.cache
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/C#.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/C#.AssemblyInfoInputs.cache
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/C#.AssemblyInfo.cs
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/C#.csproj.CoreCompileInputs.cache
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/C#.dll
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/refint/C#.dll
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/C#.pdb
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/C#.genruntimeconfig.cache
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/obj/Debug/net7.0/ref/C#.dll

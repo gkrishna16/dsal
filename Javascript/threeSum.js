@@ -1,44 +1,35 @@
 function threeSum(nums) {
   nums.sort((a, b) => a - b);
   let res = [];
-
   for (let i = 0; i < nums.length; i++) {
-    let first = nums[i];
-
-    if (first > 0) {
-      break;
-    }
-
-    if (i > 0 && first === nums[i - 1]) {
+    if (i > 0 && nums[i] === nums[i - 1]) {
       continue;
     }
+    let left = i + 1;
+    let right = nums.length - 1;
 
-    let l = i + 1,
-      r = nums.length - 1;
-
-    while (l < r) {
-      let currSum = first + nums[l] + nums[r];
-
-      if (currSum > 0) {
-        r--;
-      } else if (currSum < 0) {
-        l++;
+    while (left < right) {
+      let currSum = nums[i] + nums[left] + nums[right];
+      if (currSum < 0) {
+        left++;
+      } else if (currSum > 0) {
+        right--;
       } else {
-        res.push([first, nums[l], nums[r]]);
-        l++;
-        r--;
-        while (l < r && nums[l] === nums[l - 1]) {
-          l++;
+        res.push([nums[i], nums[left], nums[right]]);
+        left++;
+        right--;
+        while (left < right && nums[left] === nums[left - 1]) {
+          left++;
         }
-        while (l < r && nums[r] === nums[r + 1]) {
-          r--;
+        while (left < right && nums[right] === nums[right + 1]) {
+          right--;
         }
       }
     }
   }
-
   return res;
 }
 
-let val = threeSum([-1, 0, 1, 2, -1, -4]);
+let arr = [-1, 0, 1, 2, -1, -4];
+let val = threeSum(arr);
 console.log(val);

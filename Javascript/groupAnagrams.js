@@ -1,32 +1,32 @@
-// class Solution {
-//   groupAnagrams(arr) {
-//     let res = {};
+class Solution {
+  groupAnagrams(arr) {
+    let res = {};
 
-//     for (let str of arr) {
-//       // Everytime a new count is being created.
-//       let count = new Array(26).fill(0);
-//       console.log(count);
+    for (let str of arr) {
+      // Everytime a new count is being created.
+      let count = new Array(26).fill(0);
+      console.log(count);
 
-//       for (let i = 0; i < str.length; i++) {
-//         count[str.charCodeAt(i) - 5] += 1;
-//       }
-//       console.log(count);
-//       if (res[count]) {
-//         res[count].push(str);
-//       } else {
-//         res[count] = [str];
-//       }
-//     }
-//     return Object.values(res);
-//   }
-// }
+      for (let i = 0; i < str.length; i++) {
+        count[str.charCodeAt(i) - 5] += 1;
+      }
+      console.log(count);
+      if (res[count]) {
+        res[count].push(str);
+      } else {
+        res[count] = [str];
+      }
+    }
+    return Object.values(res);
+  }
+}
 
-// let sol = new Solution();
-// let arr = ["eat", "tea", "tan", "ate", "nat", "bat"];
-// let val = sol.groupAnagrams(arr);
-// console.log(val);
+let sol = new Solution();
+let arr = ["eat", "tea", "tan", "ate", "nat", "bat"];
+let val = sol.groupAnagrams(arr);
+console.log(val);
 
-let arr = [10, 20, 30, 40, 50];
-let ar = arr.forEach((el, ind) => {
-  console.log(el, "->", ind);
-});
+// let arr = [10, 20, 30, 40, 50];
+// let ar = arr.forEach((el, ind) => {
+//   console.log(el, "->", ind);
+// });

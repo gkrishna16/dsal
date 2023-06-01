@@ -12,5 +12,5 @@ void TwoSum(vector<int> & nums)
 
 int main(){
     vector<int> myNumbers = {1, 2, 4, 5, 5};
-    TwoSum(myNumbers, 5);
+    TwoSum(myNumbers);
 };
