@@ -22,14 +22,32 @@ def Factorial(n):
     return F
 
 
-def addition(n: int):
-    print(f"I am clculating F {n}")
-    if n == 0:
-        return 0
-    A = n + addition(n-1)
-    print(f"Untill now -- {A}.")
-    return A
+res = [-1] * 50
+print(res)
 
 
-add = addition(5)
-print(add)
+def fib(n):
+    if n <= 1:
+        return n
+    if res[n] != -1:
+        return res[n]
+    res[n] = fib(n-1) + fib(n-2)
+    return res[n]
+
+
+def fib2(n):
+    if n <= 1:
+        return n
+    F1 = 0
+    F2 = 1
+    F = 0
+    for i in range(2, n+1):
+        F = F1 + F2
+        F1 = F2
+        F2 = F
+    return F
+
+
+sol = fib2(10)
+print(f"TS {sol}")
+print(res)

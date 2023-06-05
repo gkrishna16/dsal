@@ -1,2 +1,2 @@
-ef __init__(self):
-    #    
+ if n <= 0:
+        re
