@@ -48,6 +48,10 @@ def fib2(n):
     return F
 
 
+def MdlrEcpntn():
+    return
+
+
 sol = fib2(10)
 print(f"TS {sol}")
 print(res)
