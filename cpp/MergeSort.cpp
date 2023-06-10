@@ -67,9 +67,15 @@ cout << endl;
 
 int main ()
 {
-
-    int nums[] = {5, 4, 3, 2, 1};
-    int n = 5;
-    reverseArray(nums, n);
+    //int nums[] = {5, 4, 3, 2, 1};
+    //int n = 5;
+    //reverseArray(nums, n);
     // mergeSort(nums, 0, n - 1);
+
+    // for (int i = 0; i < sizeof(nums) / sizeof(nums[0]);i++){
+    //cout << nums[i] << endl;
+    // }
+
+string name = "Gopal";
+cout << name << endl;
 }
