@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
-//#include <bits/stdc++.h>
-
 using namespace std;
+
+
 class Solution {
 public:
 vector < int > FindUnion(int arr1[], int arr2[], int n, int m) {
@@ -39,6 +39,7 @@ vector < int > FindUnion(int arr1[], int arr2[], int n, int m) {
 
 int main()
 {
+    
 Solution sol;
 int n = 10, m = 7;
 int arr1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -48,5 +49,6 @@ cout << "Union of arr1 and arr2 is  " << endl;
 for (auto &val : Union)
   cout << val << " ";
 cout << endl;
+
 return 0;
 }

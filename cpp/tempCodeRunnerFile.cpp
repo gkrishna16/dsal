@@ -1,9 +1,41 @@
-Solution sol;
+#include <iostream>
+#include <vector>
+using namespace std;
 
-    int n = 10, m = 7;
-    int arr1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int arr2[] = {2, 3, 4, 4, 5, 11, 12};
-    vector<int> Union = sol.FindUnion(arr1, arr2, n, m);
-    cout << "Union of arr1 and arr2 is  " << endl;
-    for (auto &val : Union)
-        cout << val << " ";
+class Solution
+{
+public:
+    void insertionSort(vector<int> &arr)
+    {
+        for (int i = 1; i < arr.size(); i++)
+        {
+            int j = i;
+            while (j > 0 && arr[j - 1] > arr[j])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = temp;
+                j--;
+            }
+        }
+
+        cout << "After using insertion sort" << endl;
+
+        for (int i = 0; i < arr.size(); i++)
+        {
+            cout << arr[i] << "  ";
+        }
+        cout << endl;
+    }
+};
+
+int main()
+{
+    vector<int> nums = {5, 4, 3, 2, 1};
+    Solution sol;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        cout << nums[i] << " ";
+    }
+    sol.insertionSort(nums);
+}

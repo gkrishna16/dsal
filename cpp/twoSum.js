@@ -9,4 +9,5 @@ var twoSum = function (nums, target) {
   }
 };
 
+console.log("Java is not the best.");
 console.log(twoSum([1, 2, 3, 4, 5, 6], 6));

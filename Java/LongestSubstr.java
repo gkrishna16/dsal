@@ -19,11 +19,10 @@ public class LongestSubstr {
         }
         return longest;
     }
+
     public static void main(String[] args) {
         System.out.println("Print");
-        int val = longestSubs(new int[] { 1, 1, 2, 3, 4,5, 8, 9 });
+        int val = longestSubs(new int[] { 1, 1, 2, 3, 4, 5, 8, 9 });
         System.out.println(val);
     }
 }
-
-
