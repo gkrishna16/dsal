@@ -6,11 +6,13 @@ void Triangle(int n)
 {
     int i = 1;
     // spaces
-    while (i <= n){
+    while (i <= n)
+    {
         // spaces
         int s = 1;
         int sp = n - i;
-        while(s<=sp){
+        while (s <= sp)
+        {
             cout << " ";
             s++;
         }
@@ -27,9 +29,14 @@ void Triangle(int n)
     }
 }
 
-int main(){
+int main()
+{
+    int *arr1 = new int[4];
+    for (int i = 0; i < 4; i++)
+    {
+        arr1[i] = i;
+        cout << arr1[i] << " " << endl;
+    }
 
-    Triangle(5);
-
-    cout << "The main function" << endl;
+    // Triangle(5);
 }

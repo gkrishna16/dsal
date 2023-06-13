@@ -8,13 +8,18 @@ using namespace std;
 // all the greater than pivot on the right
 // equal to it can go anywhere
 
-void quickSort(int nums[])
+void quickSort(int nums[], int n)
 {
-    for (int i = 0; i < sizeof(nums) / sizeof(nums[0]); i++)
-    {
-    }
+
+}
+
+void partition(int arr[], int lb, int ub)
+{
+    int pivot = arr[0];
 }
 
 int main()
 {
+
+    return 1;
 }

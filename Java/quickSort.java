@@ -2,37 +2,37 @@ import java.util.*;
 
 public class quickSort {
 
-    public static int partition(List<Integer> nums, int low, int high) {
-        int pivot = nums.get(low);
-        int i = low;
-        int j = high;
+    public static int partition(int nums[]) {
 
-        while (i < j) {
-            while (nums.get(i) <= pivot && i <= high - 1) {
-                i++;
-            }
-            while (nums.get(j) <= pivot && j >= low + 1) {
-                j--;
-            }
+        return left;
+    }
 
-            if (i < j) {
-                int temp = nums.get(i);
-                nums.set(i, nums.get(j));
-                nums.set(j, temp);
-            }
+    public static void quickSort(int[] nums, int left, int right) {
+        if (left >= right) {
+            return;
         }
-        int temp = nums.get(low);
-        nums.set(i, nums.get(j));
-        nums.set(j, temp);
-        return j;
+
+        int pivot = nums[(left + right) / 2];
+        int index = partition(nums, left, right, pivot);
+        quickSort(nums, left, index - 1);
+        quickSort(nums, index, right);
+
     }
 
-
-    public static void quickSort(List<Integer> nums, int low , int high) {
-        
+    public static void swap(int[] nums, int left, int right) {
+        int temp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = temp;
     }
-
 
     public static void main(String args[]) {
-    } 
+
+        int nums[] = { 5, 4, 3, 2, 1 };
+        quickSort(nums, 0, 4);
+
+        for (var i = 0; i < nums.length; i++) {
+            System.out.println(nums[i]);
+        }
+
+    }
 }
