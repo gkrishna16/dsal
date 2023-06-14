@@ -1,9 +1,10 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class mergeSort {
 
     public static void mergeSort(int[] arr) {
         if (arr.length > 1) {
+
             int leftLength = arr.length / 2;
             int rightLength = arr.length - leftLength;
 
@@ -23,7 +24,10 @@ public class mergeSort {
 
             mergeSort(leftArr);
             mergeSort(rightArr);
+            System.out.println("Merging now.");
+
             merge(arr, leftArr, rightArr);
+            System.out.println(Arrays.toString(arr) + "  -------  Array for the time being.");
         }
     }
 
