@@ -1,2 +1,1 @@
- // System.out.println(mid);
-            // System.out.println(leftLength + " " + rightLength);
+2, 0, 2, 1, 1, 0 

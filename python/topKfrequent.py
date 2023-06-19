@@ -16,6 +16,7 @@ class Solution:
                 if len(res) == k:
                     return res
 
+
 # O(n)
 sol = Solution()
 val = sol.topKFrequent([1, 1, 1, 2, 2, 3], 2)

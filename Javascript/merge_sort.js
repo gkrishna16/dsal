@@ -6,23 +6,45 @@ function mergeSort(arr) {
 
     mergeSort(left_arr);
     mergeSort(right_arr);
-
+    merge(arr, left_arr, right_arr);
     console.log(left_arr, right_arr);
+    console.log(`temp array --> `, arr);
   }
+
+  return arr;
 }
 
 function merge(arr, left_arr, right_arr) {
   let i = 0,
     j = 0,
     k = 0;
-  
-  while (i < left_arr.length && j < left_arr.length) {
-    
+
+  while (i < left_arr.length && j < right_arr.length) {
+    if (left_arr[i] <= right_arr[j]) {
+      arr[k] = left_arr[i];
+      i++;
+    } else {
+      arr[k] = right_arr[j];
+      j++;
+    }
+    k++;
+  }
+
+  while (i < left_arr.length) {
+    arr[k] = left_arr[i];
+    i++;
+    k++;
+  }
+
+  while (j < right_arr.length) {
+    arr[k] = right_arr[j];
+    j++;
+    k++;
   }
 }
 
-mergeSort([5, 4, 3, 2, 1]);
-
+let val = mergeSort([5, 4, 3, 2, 1]);
+console.log(val);
 //function mergeSort(arr) {
 //  if (arr.length <= 1) {
 //    return;
@@ -65,4 +87,4 @@ mergeSort([5, 4, 3, 2, 1]);
 //let val = mergeSort([5, 4, 3, 3, 23, 1, 5]);
 //console.log(val);
 
-//// The instagram friend on the porch
+// The instagram friend on the porch

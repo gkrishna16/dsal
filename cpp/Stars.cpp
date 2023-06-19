@@ -2,41 +2,35 @@
 #include <vector>
 using namespace std;
 
-void Triangle(int n)
+long long maxSubarraySum(int arr[], int n)
 {
-    int i = 1;
-    // spaces
-    while (i <= n)
+    long long maxi = LONG_MIN; // maximum sum
+    long long sum = 0;
+
+    for (int i = 0; i < n; i++)
     {
-        // spaces
-        int s = 1;
-        int sp = n - i;
-        while (s <= sp)
+        sum += arr[i];
+        if (sum > maxi)
         {
-            cout << " ";
-            s++;
+            maxi = sum;
         }
-        // stars
-        int str = 1;
-        int star = (2 * i) - 1;
-        while (str <= star)
+        // If sum < 0: discard the sum calculated
+        if (sum < 0)
         {
-            cout << "*";
-            str++;
+            sum = 0;
         }
-        cout << endl;
-        i++;
     }
+    // To consider the sum of the empty subarray
+    // uncomment the following check:
+    // if (maxi < 0) maxi = 0;
+    return maxi;
 }
 
 int main()
 {
-    int *arr1 = new int[4];
-    for (int i = 0; i < 4; i++)
-    {
-        arr1[i] = i;
-        cout << arr1[i] << " " << endl;
-    }
-
-    // Triangle(5);
+    int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    long long maxSum = maxSubarraySum(arr, n);
+    cout << "The maximum subarray sum is: " << maxSum << endl;
+    return 0;
 }
