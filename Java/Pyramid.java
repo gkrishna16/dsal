@@ -29,11 +29,15 @@ public class Pyramid {
     }
 
     public static void Pattern8(int n) {
+        // upper part
+
+        int x = 0;
+
+        // lower part
         var i = 1;
 
-        while (i <= 2 * n) {
-
-            var space = 0;
+        while (i <= n) {
+            var space = 1;
             while (space <= i) {
                 System.out.print(" ");
                 space++;
@@ -51,7 +55,7 @@ public class Pyramid {
     }
 
     public static void main(String[] args) {
-        Pattern8(4);
+        Pattern8(5);
 
     }
 }
