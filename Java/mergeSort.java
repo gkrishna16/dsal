@@ -1,71 +1,57 @@
-import java.util.*;
+import java.util.Arrays;
 
 public class mergeSort {
 
-    public static void mergeSort(int[] arr) {
-        if (arr.length > 1) {
+    public static void InsertionSort(int[] nums) {
 
-            int leftLength = arr.length / 2;
-            int rightLength = arr.length - leftLength;
+        if (nums.length > 1) {
 
-            int[] leftArr = new int[leftLength];
-            int[] rightArr = new int[rightLength];
+            int[] leftHalf = new int[nums.length / 2];
+            int[] rightHalf = new int[nums.length - nums.length / 2];
 
-            // put the values to the array
-            for (int i = 0; i < leftLength; i++) {
-                leftArr[i] = arr[i];
+            for (var i = 0; i < nums.length / 2; i++) {
+                leftHalf[i] = nums[i];
             }
-            for (int j = 0; j < rightLength; j++) {
-                rightArr[j] = arr[leftLength + j];
+
+            for (var j = 0; j < nums.length - nums.length / 2; j++) {
+                rightHalf[j] = nums[nums.length / 2 + j];
             }
-            System.out.println(Arrays.toString(leftArr) + " " + Arrays.toString(rightArr));
-            // System.out.println(mid);
-            // System.out.println(leftLength + " " + rightLength);
 
-            mergeSort(leftArr);
-            mergeSort(rightArr);
-            System.out.println("Merging now.");
+            System.out.println(Arrays.toString(leftHalf));
+            System.out.println(Arrays.toString(rightHalf));
 
-            merge(arr, leftArr, rightArr);
-            System.out.println(Arrays.toString(arr) + "  -------  Array for the time being.");
-        }
-    }
+            InsertionSort(leftHalf);
+            InsertionSort(rightHalf);
 
-    public static void merge(int[] arr, int[] leftArr, int[] rightArr) {
-        int i = 0, j = 0, k = 0;
+            int i = 0, j = 0, k = 0;
+            while (i < leftHalf.length && j < rightHalf.length) {
+                if (leftHalf[i] <= rightHalf[j]) {
+                    nums[k] = leftHalf[i];
+                    i++;
+                } else {
+                    nums[k] = rightHalf[j];
+                    j++;
+                }
+                k++;
+            }
 
-        while (i < leftArr.length && j < rightArr.length) {
-            if (leftArr[i] <= rightArr[j]) {
-                arr[k] = leftArr[i];
+            while (i < leftHalf.length) {
+                nums[k] = leftHalf[i];
                 i++;
-            } else {
-                arr[k] = rightArr[j];
-                j++;
+                k++;
             }
-            k++;
-        }
-
-        while (i < leftArr.length) {
-            arr[k] = leftArr[i];
-            i++;
-            k++;
-        }
-        while (j < rightArr.length) {
-            arr[k] = rightArr[j];
-            j++;
-            k++;
+            while (j < rightHalf.length) {
+                nums[k] = rightHalf[j];
+                j++;
+                k++;
+            }
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
+        int[] nums = { 5, 4, 3, 2, 1 };
+        InsertionSort(nums);
 
-        int arr[] = { 5, 4, 3, 2, 1, 9, 10 };
-        mergeSort(arr);
-
-        for (var i : arr) {
-            System.out.print(i + "  ");
-        }
-        System.out.println(" ");
+        System.out.println(Arrays.toString(nums));
     }
-
 }

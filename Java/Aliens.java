@@ -1,0 +1,13 @@
+// Recursion 
+// Linked List
+
+public class Aliens {
+    static class Node {
+        int data;
+        Node next;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}

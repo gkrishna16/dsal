@@ -1,33 +1,33 @@
 public class SortArrZroOns {
     public static void SrtZrsOns(int[] nums) {
-        int l = 0;
-        int m = 0;
-        int h = nums.length - 1;
-        int temp;
 
-        while (m <= h) {
-            switch (nums[m]) {
+        int low = 0, mid = 0, high = nums.length - 1;
+        int temp;
+        while (mid <= high) {
+            switch (nums[mid]) {
                 case 0: {
-                    temp = nums[m];
-                    nums[m] = nums[l];
-                    nums[l] = temp;
-                    l++;
-                    m++;
-                    break;
+                    temp = nums[low];
+                    nums[low] = nums[mid];
+                    nums[mid] = temp;
+                    low++;
+                    mid++;
+
                 }
-                case 1: {
-                    m++;
-                    break;
+
+            case 1: {
+                    mid++;
+
                 }
                 case 2: {
-                    temp = nums[h];
-                    nums[h] = nums[m];
-                    nums[m] = temp;
-                    h--;
-                    break;
+                    temp = nums[mid];
+                    nums[mid] = nums[high];
+                    nums[high] = temp;
+                    high--;
+
                 }
             }
         }
+
     }
 
     public static void main(String[] args) {

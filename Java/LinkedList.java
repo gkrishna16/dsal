@@ -1,49 +1,115 @@
-public class LinkedList {
+class Node<T> {
+    T data;
+    Node next;
 
-    class Node {
-        int data;
-        Node next;
-
-        public Node(int d) {
-            data = d;
-            next = null;
-        }
+    Node(T data) {
+        this.data = data;
+        this.next = null;
     }
+}
 
-    static Node head; // head of list
+public class LinkedList<T> {
+    Node head;
 
-    public void insert(int value) {
-        Node newNode = new Node(value);
+    public <T> void Prepend(T d) {
         if (head == null) {
-            head = newNode;
-            return;
-        } else {
-            Node current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+            head = new Node<T>(d);
             return;
         }
+        Node<T> newNode = new Node<T>(d);
+        newNode.next = head;
+        head = newNode;
+        return;
+
     }
 
-    public static void printList() {
-        Node current = head;
-        while (current != null) {
-            System.out.print(current.data + " --> ");
+    public <T> void Append(T d) {
+        if (head == null) {
+            head = new Node<T>(d);
+            return;
+        }
+        Node<T> current = head;
+        while (current.next != null) {
             current = current.next;
         }
+        current.next = new Node<T>(d);
 
-        System.out.println();
     }
 
-    public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
-        ll.insert(0);
-        ll.insert(1);
-        ll.insert(2);
-        ll.insert(3);
+    public <T> void deleteWithValue(T data) {
+        if (head == null)
+            return;
+        if (head.data == data) {
+            head = head.next;
+            return;
+        }
+        Node current = head;
+        while (current.next != null) {
+            if (current.next.data == data) {
+                current.next = current.next.next;
+                return;
+            }
+            current = current.next;
+        }
+    }
 
-        ll.printList();
+    public void DeleteAtHead() {
+        if (head == null) {
+            System.out.println("The linked list is empty.");
+            return;
+        }
+        head = head.next;
+    }
+
+    public <T> void SearchItem(T d) {
+        if (head == null) {
+            System.out.println("The linkedlist is empty.");
+            System.out.println("False");
+            return;
+        }
+
+        Node current = head;
+        while (current != null) {
+            if (current.data == d) {
+                System.out.println("True");
+                return;
+            }
+            current = current.next;
+        }
+        System.out.println("False");
+    }
+
+    public <T> void PrintAll() {
+        if (isEmpty()) {
+            System.out.println("There are no elements in the linkedlist.");
+            return;
+        }
+
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println();
+
+    }
+
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+    public static void main(String args[]) {
+        LinkedList<Integer> ll = new LinkedList<>();
+        ll.Append(10);
+        ll.Prepend(20);
+        ll.PrintAll();
+        ll.Prepend(30);
+        ll.PrintAll();
+        ll.Append(40);
+        ll.PrintAll();
+        ll.deleteWithValue(40);
+        ll.PrintAll();
+        ll.SearchItem(206);
+
     }
 }

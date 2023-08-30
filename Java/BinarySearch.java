@@ -13,7 +13,7 @@ public class BinarySearch {
             if (numberToFind == middleNumber) {
                 return middlePosition;
             }
-            if (numberToFind < middlePosition) {
+            if (numberToFind < middlePosition) {                
                 high = middlePosition - 1;
             }
             else {

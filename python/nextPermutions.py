@@ -7,7 +7,8 @@ class Solution:
                 break
         # reverse array as there are not
         if ind == -1:
-            return nums.reverse()
+            nums.reverse()
+            return nums
         print(ind)
 
         # swap the largest element
