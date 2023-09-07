@@ -48,8 +48,36 @@ public class Main {
         }
     }
 
+    public static void Pattern10(int n) {
+        int i = 1;
+        int rowtill = (2 * n) - 1;
+        while (i <= rowtill) {
+            // print star
+            int str = 1;
+            int strtill = i;
+            if (i > n) {
+                strtill = 2 * n - i;
+            }
+            while (str <= strtill) {
+                System.out.print("*");
+                str++;
+            }
+            System.out.println();
+            i++;
+        }
+    }
+
+    public static void ReverseTriangle(int n) {
+
+        // print reverse triangle
+        
+
+    }
+
     public static void main(String args[]) {
-        Pyramid1(5);
-        Pyramid2(5);
+        Pattern10(5);
+        ReverseTriangle(5);
+        // Pyramid1(5);
+        // Pyramid2(5);
     }
 }
