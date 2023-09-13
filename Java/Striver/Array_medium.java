@@ -1,6 +1,28 @@
 import java.util.*;
 
 public class Array_medium {
+
+    public static void sortArrayof0s(int nums[]) {
+        int mid = 0, low = 0, high = nums.length - 1;
+        while (mid <= high) {
+            if (nums[mid] == 0) {
+                int temp = nums[mid];
+                nums[mid] = nums[low];
+                nums[low] = temp;
+                low++;
+                mid++;
+            } else if (nums[mid] == 1) {
+                mid++;
+            } else {
+                int temp = nums[mid];
+                nums[mid] = nums[high];
+                nums[high] = temp;
+                high--;
+
+            }
+        }
+    }
+
     public static void markRows(ArrayList<ArrayList<Integer>> matrix, int n, int m, int i) {
         for (int j = 0; j < m; j++) {
             if (matrix.get(i).get(j) != 0) {
@@ -120,36 +142,179 @@ public class Array_medium {
         return nums;
     }
 
-    public static void main(String args[]) {
-        int arr[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-
-        int rotated[][] = transposeMatrix(arr);
-
-        System.out.println("Rotated Image");
-        for (int i = 0; i < rotated.length; i++) {
-            for (int j = 0; j < rotated.length; j++) {
-                System.out.print(rotated[i][j] + " ");
-            }
-            System.out.println();
+    public static int majorityEl2(int nums[]) {
+        var mpp = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            mpp.put(nums[i], mpp.getOrDefault(nums[i], 0) + 1);
         }
 
-        // ArrayList<ArrayList<Integer>> matrix = new ArrayList<>();
-        // matrix.add(new ArrayList<>(Arrays.asList(1, 1, 1)));
-        // matrix.add(new ArrayList<>(Arrays.asList(1, 0, 1)));
-        // matrix.add(new ArrayList<>(Arrays.asList(1, 1, 1)));
+        // searching for the majority element :
+        for (Map.Entry<Integer, Integer> it : mpp.entrySet()) {
+            if (it.getValue() > (nums.length / 2)) {
+                return it.getKey();
+            }
+        }
 
-        // int n = matrix.size(); // rows
-        // int m = matrix.get(0).size(); // cols
+        return -1;
+    }
 
-        // ArrayList<ArrayList<Integer>> ans = zeroMatrix(matrix, n, m);
+    public static int maxSubArray(int[] arr, int n) {
+        int maxi = Integer.MIN_VALUE;
 
-        // System.out.println("The Final matrix is: ");
-        // for (ArrayList<Integer> row : ans) {
-        // for (Integer ele : row) {
-        // System.out.print(ele + " ");
-        // }
-        // System.out.println();
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                int sum = 0;
 
-        // }
+                // add all the element of subarray:
+                for (int k = i; k <= j; k++) {
+                    sum += arr[k];
+                }
+                maxi = Math.max(maxi, sum);
+            }
+        }
+
+        return maxi;
+
+    };
+
+    public static int maxSubArr2(int arr[], int n) {
+        int maxi = Integer.MIN_VALUE;
+
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            for (int j = i; j < n; j++) {
+                sum += arr[j];
+                maxi = Math.max(maxi, sum);
+            }
+        }
+
+        return maxi;
+    }
+
+    public static long maxSubArrSum(int arr[], int n) {
+        long maxi = Integer.MIN_VALUE;
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+
+            if (sum > maxi) {
+                maxi = sum;
+            }
+
+            if (sum < 0) {
+                sum = 0;
+            }
+        }
+
+        return maxi;
+    }
+
+    public static int maxProfit(int nums[]) {
+        int maxPro = 0;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] > nums[i]) {
+                    maxPro = Math.max(nums[j] - nums[i], maxPro);
+                }
+            }
+        }
+
+        return maxPro;
+    }
+
+    public static int maxProfit2(int nums[]) {
+        int maxProfit = 0;
+        int minPrice = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            minPrice = Math.min(minPrice, nums[i]);
+            maxProfit = Math.max(maxProfit, nums[i] - minPrice);
+        }
+
+        return maxProfit;
+
+    }
+
+    public static void nextPermutation(int nums[]) {
+        if (nums == null || nums.length <= 1)
+            return;
+
+        int ind = -1;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (nums[i + 1] > nums[i]) {
+                ind = i;
+                break;
+            }
+        }
+
+        // if break point does not exist:
+        if (ind == -1) {
+            // reverse the whole array
+            reverse(nums, 0, nums.length - 1);
+        }
+
+    }
+
+    public static void swap(int[] A, int i, int j) {
+        int temp = A[i];
+        A[i] = A[j];
+        A[j] = temp;
+    }
+
+    public static void reverse(int[] A, int i, int j) {
+        while (i < j) {
+            swap(A, i++, j--);
+        }
+    }
+
+    public static int longestSuccessiveElements(int[] a) {
+        if (a.length == 0)
+            return 0;
+
+        int longest = 1;
+        var set = new HashSet<Integer>();
+
+        for (int i = 0; i < a.length; i++) {
+            set.add(a[i]);
+        }
+
+        // find the longest sequence
+        for (int it : set) {
+            // if 'it' is a starting number
+            if (!set.contains(it - 1)) {
+                int cnt = 1;
+                int x = it;
+                while (set.contains(x + 1)) {
+                    x = x + 1;
+                    cnt = cnt + 1;
+                }
+                longest = Math.max(longest, cnt);
+            }
+
+        }
+        return longest;
+    }
+
+    public static int findAllSubarraysWithGivenSum(int arr[], int k) {
+        var st = new HashMap<Integer, Integer>();
+        st.put(0, 1);
+        int cnt = 0, preSum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            preSum += arr[i];
+            int diff = preSum - k;
+            cnt += st.getOrDefault(diff, 0);
+            // Update the count of prefix sum
+            // in the map
+            st.put(preSum, st.getOrDefault(preSum, 0) + 1);
+        }
+        return cnt;
+
+    }
+
+    public static void main(String args[]) {
+        int[] arr = { 3, 1, 2, 4 };
+        int k = 6;
+        int cnt = findAllSubarraysWithGivenSum(arr, k);
+        System.out.println("The number of subarrays is: " + cnt);
     }
 }

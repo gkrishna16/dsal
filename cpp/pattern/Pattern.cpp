@@ -259,6 +259,30 @@ public:
 
         cout << reversed << endl;
     }
+    void pattern12(int n)
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            // print first number in the col
+            for (int j = 1; j <= i; j++)
+            {
+                cout << j;
+            }
+            // print space in the middle
+            for (int spc = 1; spc <= (2 * n) - (2 * i); spc++)
+            {
+                cout << " ";
+            }
+
+            // print last star series of the row
+            for (int k = i; k >= 1; k--)
+            {
+                cout << k;
+            }
+
+            cout << endl;
+        }
+    }
 };
 
 // 123%10 = 3
@@ -277,13 +301,8 @@ int main()
 {
     Solution sol;
     int N = 5;
-    sol.reverse(456);
-    sol.Pattern21(5);
-    char ch = 'A';
-    // cout << (char)(ch + 5) << endl;
-    cout << 1 / 2;
-
-    cout << endl;
+    sol.pattern12(N);
+    // cout << endl;
 
     return 1;
 }
