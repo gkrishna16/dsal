@@ -283,6 +283,30 @@ public:
             cout << endl;
         }
     }
+    void pattern13(int n)
+    {
+        int num = 1;
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= i; j++)
+            {
+                cout << num << " ";
+                num++;
+            }
+            cout << endl;
+        }
+    }
+    void pattern14(int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (char j = 'A'; j <= 'A' + i; j++)
+            {
+                cout << j << " ";
+            }
+            cout << endl;
+        }
+    }
 };
 
 // 123%10 = 3
@@ -301,7 +325,8 @@ int main()
 {
     Solution sol;
     int N = 5;
-    sol.pattern12(N);
+    // sol.pattern12(N);
+    sol.pattern14(N);
     // cout << endl;
 
     return 1;
