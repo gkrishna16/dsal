@@ -119,27 +119,47 @@ public:
         return arr[arr.size() - 1];
     }
 
-    static int findLargestElement(int arr[])
+    // static int findLargestElement(int arr[])
+    //{
+    //     int max = arr[0];
+    //     for (int i = 0; i < sizeof(arr) / sizeof(int); i++)
+    //     {
+    //         if (arr[i] > max)
+    //         {
+    //             max = arr[i];
+    //         }
+    //     }
+    //     cout << max;
+    //     return max;
+    // }
+
+    void insertionSort(vector<int> &nums)
     {
-        int max = arr[0];
-        for (int i = 0; i < sizeof(arr) / sizeof(int); i++)
+        for (int i = 0; i < nums.size(); i++)
         {
-            if (arr[i] > max)
+            int j = i;
+            while (j > 0 && nums[j - 1] > nums[j])
             {
-                max = arr[i];
-            }
+                int temp = nums[j - 1];
+                nums[j - 1] = nums[j];
+                nums[j] = temp;
+                j--;
+            };
         }
-        cout << max;
-        return max;
     }
 };
 
 int main()
 {
-    int nums[] = {5, 4, 3, 2, 1};
+    vector<int> nums = {5, 4, 3, 2, 1};
     Solution sol;
 
-    sol.findLargestElement(nums);
+    sol.insertionSort(nums);
+
+    for (auto a : nums)
+    {
+        cout << a << " ";
+    }
     cout << endl;
     return 1;
 }
