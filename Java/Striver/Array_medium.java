@@ -295,26 +295,141 @@ public class Array_medium {
         return longest;
     }
 
+    public static void subArraySum(int a[], int sum) {
+        int currSum = 0, start = 0, end = -1;
+
+        var map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < a.length; i++) {
+            currSum += a[i];
+            if (currSum - sum == 0) {
+                start = 0;
+                end = i;
+            }
+            if (map.containsKey(currSum - sum)) {
+                start = map.get(currSum - sum) + 1;
+                end = i;
+                break;
+            }
+            map.put(currSum, i);
+        }
+        if (end == -1) {
+            System.out.println("Not found");
+        } else {
+            System.out.println(start + " " + end);
+        }
+
+    }
+
     public static int findAllSubarraysWithGivenSum(int arr[], int k) {
-        var st = new HashMap<Integer, Integer>();
-        st.put(0, 1);
+        var mp = new HashMap<Integer, Integer>();
+        mp.put(0, 1);
         int cnt = 0, preSum = 0;
+
         for (int i = 0; i < arr.length; i++) {
             preSum += arr[i];
-            int diff = preSum - k;
-            cnt += st.getOrDefault(diff, 0);
-            // Update the count of prefix sum
-            // in the map
-            st.put(preSum, st.getOrDefault(preSum, 0) + 1);
+            int rsum = preSum - k;
+            cnt += mp.getOrDefault(rsum, 0);
+            mp.put(preSum, mp.getOrDefault(preSum, 0) + 1);
         }
+
         return cnt;
+    }
+
+    public static void rotate2(int[][] matrix) {
+
+        // transpose the matrix
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = i; j < matrix[0].length; j++) {
+                int temp = 0;
+                temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+
+        // reverse each row in the array
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length / 2; j++) {
+                int temp = 0;
+                temp = matrix[i][j];
+                matrix[i][j] = matrix[i][matrix.length - 1 - j];
+                matrix[i][matrix.length - 1 - j] = temp;
+            }
+        }
+    }
+
+    public static ArrayList<Integer> printSpiral(int[][] mat) {
+        // Define ans list to store the result
+        int n = mat.length; // no of rows
+        int m = mat[0].length; // no of columns
+
+        // Define the list to store the results
+        var ans = new ArrayList<Integer>();
+
+        // Initialize the pointers required for traversal
+        int top = 0, left = 0, bottom = n - 1, right = m - 1;
+        while (top <= bottom && left <= right) {
+
+            // for moving left to right
+            for (int i = left; i <= right; i++) {
+                ans.add(mat[top][i]);
+            }
+            top++;
+
+            // For moving top to bottom
+            for (int i = top; i <= bottom; i++) {
+                ans.add(mat[i][right]);
+            }
+            right--;
+
+            // For moving right to left
+            if (top <= bottom) {
+                for (int i = right; i >= left; i++) {
+                    ans.add(mat[bottom][i]);
+                }
+                bottom--;
+            }
+            // For moving bottom to top
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    ans.add(mat[i][left]);
+                }
+
+                left++;
+            }
+
+        }
+
+        return ans;
 
     }
 
     public static void main(String args[]) {
-        int[] arr = { 3, 1, 2, 4 };
-        int k = 6;
-        int cnt = findAllSubarraysWithGivenSum(arr, k);
-        System.out.println("The number of subarrays is: " + cnt);
+        int arr[][] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        rotate2(arr);
+        System.out.println("Rotated Image");
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        int nums[] = { 1, 2, 3, 4, 5 };
+        for (int i = 0; i < nums.length / 2; i++) {
+            int temp = nums[i];
+            nums[i] = nums[nums.length - i - 1];
+            nums[nums.length - i - 1] = temp;
+        }
+
+        for (int i : nums) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
     }
 }
+
+// the newer sdks are here on the verge of collapse twenty hour week
+// three weeks in change
+// bring them along

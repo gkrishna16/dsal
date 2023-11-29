@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Queue {
 
     private static class Node {
@@ -73,6 +75,15 @@ public class Queue {
         q.PrintAll();
         q.remove();
         q.PrintAll();
+
+        var Q = new LinkedList<Integer>();
+        Q.add(100);
+        Q.add(200);
+        Q.add(300);
+
+        System.out.println(Q.poll());
+
+        System.out.println(Q.poll());
 
     }
 }

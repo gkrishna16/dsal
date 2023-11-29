@@ -68,15 +68,32 @@ public class Main {
     }
 
     public static void ReverseTriangle(int n) {
-
         // print reverse triangle
-        
 
     }
 
+    public static void Pattern22(int n) {
+
+        System.out.println();
+
+        for (int i = 0; i < 2 * n - 2; i++) {
+            for (int j = 0; j < 2 * n - 2; j++) {
+                int top = i; // distance from the top
+                int left = j; // distance from the left side
+                int bottom = (2 * n - 2) - i; // distance from the bottom
+                int right = (2 * n - 2) - j; // distance from the right side
+                // Pattern 2 in the Pattern2
+
+                System.out.print(n - Math.min(Math.min(top, bottom), Math.min(left, right)) + " ");
+            }
+
+            System.out.println();
+        }
+    }
+
     public static void main(String args[]) {
-        Pattern10(5);
-        ReverseTriangle(5);
+        Pattern22(4);
+        // ReverseTriangle(5);
         // Pyramid1(5);
         // Pyramid2(5);
     }

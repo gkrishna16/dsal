@@ -307,7 +307,64 @@ public:
             cout << endl;
         }
     }
+    void pattern15(int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (char j = 'A'; j < 'A' + (n - i); j++)
+            {
+                cout << j << " ";
+            }
+            cout << endl;
+        }
+    };
+
+    void pattern21(int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (i == 0 || j == 0 || i == n - 1 || j == n - 1)
+                {
+                    cout << "*";
+                }
+                else
+                    cout << " ";
+            }
+            cout << endl;
+        }
+    }
+
+    void pattern22(int n)
+    {
+        for (int i = 0; i < 2 * n - 1; i++)
+        {
+            // inner loop for no. of columns.
+            for (int j = 0; j < 2 * n - 1; j++)
+            {
+                int top = i;
+                int left = j;
+                int right = (2 * n - 2) - j;
+                int down = (2 * n - 2) - i;
+                cout << (n - min(min(top, down), min(left, right))) << " ";
+            }
+
+            cout << endl;
+        }
+    }
 };
+
+int main()
+{
+    Solution sol;
+    int N = 5;
+    // sol.pattern12(N);
+    sol.pattern22(4);
+    // cout << endl;
+
+    return 1;
+}
 
 // 123%10 = 3
 // 0*10 + 3 = 3
@@ -320,14 +377,3 @@ public:
 // 1%10 = 1
 // 32 * 10 + 1 = 321
 // 1/10 = 0
-
-int main()
-{
-    Solution sol;
-    int N = 5;
-    // sol.pattern12(N);
-    sol.pattern14(N);
-    // cout << endl;
-
-    return 1;
-}

@@ -4,7 +4,6 @@ using namespace std;
 
 class Solution
 {
-
 public:
     void selectionSort(int nums[], int n)
     {
@@ -119,7 +118,7 @@ public:
         return arr[arr.size() - 1];
     }
 
-    // static int findLargestElement(int arr[])
+    // int findLargestElement(int arr[])
     //{
     //     int max = arr[0];
     //     for (int i = 0; i < sizeof(arr) / sizeof(int); i++)
@@ -147,16 +146,53 @@ public:
             };
         }
     }
+
+    void BubbleSort3(vector<int> &nums)
+    {
+        bool swapped;
+        for (int i = nums.size() - 1; i >= 0; i--)
+        {
+            swapped = 0;
+            for (int j = 0; j < i; j++)
+            {
+                if (nums[j] > nums[j + 1])
+                {
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                    swapped = 1;
+                }
+                if (swapped == 0)
+                {
+                    break;
+                }
+            }
+        }
+    }
+
+    void insrtnSort(vector<int> &nums, int i, int n)
+    {
+        if (i == n)
+            return;
+
+        int j = i;
+        while (j > 0 && nums[j - 1] > nums[j])
+        {
+            int temp = nums[j];
+            nums[j] = nums[j - 1];
+            nums[j - 1] = temp;
+            j--;
+        }
+        insrtnSort(nums, i + 1, n);
+    }
 };
 
 int main()
 {
     vector<int> nums = {5, 4, 3, 2, 1};
     Solution sol;
-
-    sol.insertionSort(nums);
-
-    for (auto a : nums)
+    sol.insrtnSort(nums, 0, nums.size());
+    for (auto &a : nums)
     {
         cout << a << " ";
     }
