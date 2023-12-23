@@ -1,2 +1,1 @@
-for (auto &a : nums)
-    //     
+start + (end - start) / 2

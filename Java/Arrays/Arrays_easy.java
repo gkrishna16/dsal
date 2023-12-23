@@ -26,6 +26,7 @@ public class Arrays_easy {
                 small = arr[i];
             } else if (arr[i] < second_small && arr[i] != small) {
                 second_small = arr[i];
+
             }
         }
 
@@ -39,12 +40,40 @@ public class Arrays_easy {
                 return false;
         }
 
-        return true                                                     ;
+        return true;
+    }
+
+    public static void isSorted(int nums[]) {
+        for (var i = 0; i < nums.length; i++) {
+            if (nums[i] > nums[i + 1])
+                return false;
+        }
+        return true;
+    }
+
+    public static void quickSort(int nums[]) {
+        for (int i = 1; i < nums.length; i++) {
+            int i = j;
+            while (i > 0 && nums[i] < nums[i - 1]) {
+                int temp = nums[i];
+                nums[i] = nums[i + 1];
+                nums[i + 1] = temp;
+                i--;
+            }
+
+        }
     }
 
     public static void main(String[] args) {
-        int arr[] = { 1, 2, 3, 4, 5, 0 }, n = 6;
+        // int arr[] = { 1, 2, 3, 4, 5, 0 }, n = 6;
+        int nums[] = { 5, .4, 3, 2 };
 
-        System.out.println(isSorted(arr, n));
+        quickSort(nums);
+
+        for (int i : nums) {
+            System.out.println(i);
+        }
+
+        // System.out.println(isSorted(arr, n));
     }
 }

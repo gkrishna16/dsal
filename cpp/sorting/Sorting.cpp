@@ -1,5 +1,7 @@
-#include <iostream>
+#include <iostream> // preprocessor directive - before compilation all the files would be copeid
 #include <vector>
+#include <algorithm>
+
 using namespace std;
 
 class Sort
@@ -72,15 +74,137 @@ public:
             nums[i] = temp;
         }
     }
+
+    int partition(vector<int> &nums, int start, int end, int pivot)
+    {
+        while (start <= end)
+        {
+            while (nums[start] < pivot)
+            {
+                start++;
+            }
+            while (nums[end] > pivot)
+            {
+                end--;
+            }
+
+            if (start <= end)
+            {
+                int temp = nums[start];
+                nums[start] = nums[end];
+                nums[end] = temp;
+                start++;
+                end--;
+            }
+        }
+        return start;
+    }
+
+    void quickSort(vector<int> &nums, int start, int end)
+    {
+        if (start < end)
+        {
+            int pivot = nums[(start + end) / 2];
+            int index = partition(nums, start, end, pivot);
+
+            quickSort(nums, start, index - 1);
+            quickSort(nums, index, end);
+        }
+    }
+    void merge(vector<int> &nums, int start, int mid, int end)
+    {
+        int i = start;
+        int j = mid + 1;
+        vector<int> temp;
+
+        while (i <= mid && j <= end)
+        {
+            if (nums[i] <= nums[j])
+            {
+                temp.push_back(nums[i]);
+                i++;
+            }
+            else
+            {
+                temp.push_back(nums[j]);
+                j++;
+            }
+        }
+
+        while (i <= mid)
+        {
+            temp.push_back(nums[i]);
+            i++;
+        }
+
+        while (j <= end)
+        {
+            temp.push_back(nums[j]);
+            j++;
+        };
+
+        for (int k = start; k <= end; k++)
+        {
+            nums[k] = temp[k - start];
+        }
+    }
+
+    void merge_sort(vector<int> &nums, int start, int end)
+    {
+        if (start >= end)
+            return;
+
+        int mid = start + (end - start) / 2;
+        merge_sort(nums, start, mid);
+        merge_sort(nums, mid + 1, end);
+
+        merge(nums, start, mid, end);
+    }
+
+    int partition2(vector<int> &nums, int start, int end, int pivot)
+    {
+        while (start <= end)
+        {
+            if (nums[start] < pivot)
+            {
+                start++;
+            }
+            if (nums[end] > pivot)
+            {
+                end--;
+            }
+
+            if (start <= end)
+            {
+                int temp = nums[start];
+                nums[start] = nums[end];
+                nums[end] = temp;
+                start++;
+                end--;
+            }
+        }
+        return start;
+    }
+
+    void quickSort2(vector<int> &nums, int start, int end)
+    {
+        if (start < end)
+        {
+            int pivot = nums[start + (end - start) / 2];
+            int index = partition2(nums, start, end, pivot);
+
+            quickSort2(nums, start, index - 1);
+            quickSort2(nums, index, end);
+        }
+    }
 };
 
 int main()
 {
     vector<int> nums = {10, 9, 8, 7, 6, 5, 4};
     Sort srt;
-    // srt.recurBubbleSort(nums, nums.size());
-    // srt.recurInsertionSort(nums, 0, nums.size());
-    srt.selection_sort(nums);
+
+    srt.quickSort2(nums, 0, nums.size() - 1);
 
     for (auto &num : nums)
     {
@@ -88,4 +212,9 @@ int main()
     }
 
     cout << endl;
+    // srt.merge_sort(nums, 0, nums.size() - 1);
+
+    // srt.recurBubbleSort(nums, nums.size());
+    // srt.recurInsertionSort(nums, 0, nums.size());
+    // srt.quickSort(nums, 0, nums.size() - 1);
 }

@@ -38,7 +38,7 @@ public:
         }
         return gcd(b, a % b);
     }
-    void armStrongNum(int n)
+    bool armStrongNum(int n)
     {
         int originalno = n;
         int count = 0;
@@ -52,17 +52,108 @@ public:
         while (n != 0)
         {
             int lastDigit = n % 10;
-            sumofPower = pow(lastDigit, count);
+            sumofPower += pow(lastDigit, count);
             n /= 10;
         }
         return (sumofPower == originalno);
+    }
+
+    void printDivisorsBruteForce(int n)
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            if (n % i == 0)
+            {
+                cout << i << " ";
+            }
+        }
+    }
+
+    void printDivisorOptimal(int n)
+    {
+        for (int i = 1; i <= sqrt(n); i++)
+        {
+            if (n % i == 0)
+            {
+                cout << i << " ";
+                if (n / i != i)
+                    cout << (n / i) << " ";
+            }
+        }
+    }
+
+    void GCDbrute(int n1, int n2)
+    {
+        int ans;
+        for (int i = 1; i <= min(n1, n2); i++)
+        {
+            if (n1 % i == 0 && n2 % i == 0)
+            {
+                ans = i;
+            }
+        }
+
+        cout << "The GCD of the two numbers is " << ans;
+    }
+
+    int GCD(int n1, int n2)
+    {
+        if (n2 == 0)
+        {
+            return n1;
+        }
+        return GCD(n1, n1 % n2);
+    }
+
+    void recur(int n)
+    {
+        if (n <= 0)
+        {
+            return;
+        }
+        cout << n << endl;
+        cout << "_____________" << endl;
+
+        recur(n - 1);
+        cout << n << endl;
+    }
+
+    int fib(int N)
+    {
+        // base condition
+        if (N <= 1)
+        {
+            return N;
+        }
+
+        int last = fib(N - 1);
+        int first = fib(N - 2);
+        return last + first;
+    }
+
+    int factorial(int n)
+    {
+        cout << "I am calculating F(" << n << ")\n";
+        if (n == 0)
+            return 1;
+
+        int F = n * factorial(n - 1);
+        cout << "Done ! F(" << n << ") = " << F << "\n";
+        return F;
     }
 };
 
 int main()
 {
+
     Solution sol;
-    int n = 121;
-    cout << "Number of digits in " << n << " is " << sol.reverse(n) << ".";
-    cout << endl;
+    // sol.recur(4);.3
+    int nums[5];
+    int fibn = sol.fib(4);
+    sol.factorial(5);
+    // cout << fibn << endl;
+    //  int n = 36;
+    //  sol.printDivisorOptimal(n);
+    //  cout << endl;
+    return 1;
 }

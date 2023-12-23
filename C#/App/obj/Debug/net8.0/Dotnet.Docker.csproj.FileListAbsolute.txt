@@ -1,0 +1,15 @@
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Debug/net8.0/Dotnet.Docker
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Debug/net8.0/Dotnet.Docker.deps.json
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Debug/net8.0/Dotnet.Docker.runtimeconfig.json
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Debug/net8.0/Dotnet.Docker.dll
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Debug/net8.0/Dotnet.Docker.pdb
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/Dotnet.Docker.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/Dotnet.Docker.AssemblyInfoInputs.cache
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/Dotnet.Docker.AssemblyInfo.cs
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/Dotnet.Docker.csproj.CoreCompileInputs.cache
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/Dotnet.Docker.sourcelink.json
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/Dotnet.Docker.dll
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/refint/Dotnet.Docker.dll
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/Dotnet.Docker.pdb
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/Dotnet.Docker.genruntimeconfig.cache
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/obj/Debug/net8.0/ref/Dotnet.Docker.dll

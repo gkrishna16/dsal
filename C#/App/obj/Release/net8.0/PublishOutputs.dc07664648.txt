@@ -1,0 +1,5 @@
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Release/net8.0/publish/Dotnet.Docker
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Release/net8.0/publish/Dotnet.Docker.dll
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Release/net8.0/publish/Dotnet.Docker.deps.json
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Release/net8.0/publish/Dotnet.Docker.runtimeconfig.json
+/Users/gopalkbks/Desktop/work/programming/C++/dsal/C#/App/bin/Release/net8.0/publish/Dotnet.Docker.pdb
