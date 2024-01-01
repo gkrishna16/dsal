@@ -7,214 +7,70 @@ using namespace std;
 class Sort
 {
 public:
-    void bubbleSort(vector<int> &nums)
+    void merge(int nums[], int left, int mid, int right)
     {
-        bool swapped;
-        for (int i = 0; i < nums.size() - 1; i++)
-        {
-            for (int j = 0; j < nums.size() - 1 - i; j++)
-            {
+        int const n1 = mid - left + 1;
+        int const n2 = right - mid;
 
-                if (nums[j] > nums[j + 1])
-                {
-                    int temp = nums[j];
-                    nums[j] = nums[j + 1];
-                    nums[j + 1] = temp;
-                    swapped = true;
-                }
-            }
-            if (swapped == false)
-                break;
+        auto *leftArray = new int[n1], *rightArray = new int[n2];
+
+        // Copy data to temp arrays leftArray[] and rightArray[]
+        for (auto i = 0; i < n1; i++)
+        {
+            leftArray[i] = nums[left + i];
         }
-    }
-
-    void recurBubbleSort(vector<int> &nums, int n)
-    {
-        if (n == 1)
-            return;
-
-        for (int i = 0; i < n - 1; i++)
+        for (auto j = 0; j < n2; j++)
         {
-            int temp = nums[i];
-            nums[i] = nums[i + 1];
-            nums[i + 1] = temp;
+            rightArray[j] = nums[mid + 1 + j];
         }
-        recurBubbleSort(nums, n - 1);
-    }
 
-    void recurInsertionSort(vector<int> &nums, int i, int n)
-    {
-        if (i == n)
-            return;
-        int j = i;
-        while (j > 0 && nums[j - 1] > nums[j])
+        auto leftArrIndex = 0,
+             rightArrIndex = 0;
+        int mergedArrIndex = left;
+        while (leftArrIndex < n1 && rightArrIndex < n2)
         {
-            int temp = nums[j];
-            nums[j] = nums[j - 1];
-            nums[j - 1] = temp;
-            j--;
-        }
-        recurInsertionSort(nums, i + 1, n);
-    }
-
-    void selection_sort(vector<int> &nums)
-    {
-        for (int i = 0; i < nums.size(); i++)
-        {
-            int mini = i;
-            for (int j = i + 1; j < nums.size(); j++)
+            if (leftArray[leftArrIndex] < rightArray[rightArrIndex])
             {
-                if (nums[j] < nums[mini])
-                {
-                    mini = j;
-                }
-            }
-            int temp = nums[mini];
-            nums[mini] = nums[i];
-            nums[i] = temp;
-        }
-    }
-
-    int partition(vector<int> &nums, int start, int end, int pivot)
-    {
-        while (start <= end)
-        {
-            while (nums[start] < pivot)
-            {
-                start++;
-            }
-            while (nums[end] > pivot)
-            {
-                end--;
-            }
-
-            if (start <= end)
-            {
-                int temp = nums[start];
-                nums[start] = nums[end];
-                nums[end] = temp;
-                start++;
-                end--;
-            }
-        }
-        return start;
-    }
-
-    void quickSort(vector<int> &nums, int start, int end)
-    {
-        if (start < end)
-        {
-            int pivot = nums[(start + end) / 2];
-            int index = partition(nums, start, end, pivot);
-
-            quickSort(nums, start, index - 1);
-            quickSort(nums, index, end);
-        }
-    }
-    void merge(vector<int> &nums, int start, int mid, int end)
-    {
-        int i = start;
-        int j = mid + 1;
-        vector<int> temp;
-
-        while (i <= mid && j <= end)
-        {
-            if (nums[i] <= nums[j])
-            {
-                temp.push_back(nums[i]);
-                i++;
+                nums[mergedArrIndex] = leftArray[leftArrIndex];
+                leftArrIndex++;
             }
             else
             {
-                temp.push_back(nums[j]);
-                j++;
+                nums[mergedArrIndex] = rightArray[rightArrIndex];
+                rightArrIndex++;
             }
-        }
-
-        while (i <= mid)
-        {
-            temp.push_back(nums[i]);
-            i++;
-        }
-
-        while (j <= end)
-        {
-            temp.push_back(nums[j]);
-            j++;
-        };
-
-        for (int k = start; k <= end; k++)
-        {
-            nums[k] = temp[k - start];
+            mergedArrIndex++;
         }
     }
 
-    void merge_sort(vector<int> &nums, int start, int end)
-    {
-        if (start >= end)
-            return;
-
-        int mid = start + (end - start) / 2;
-        merge_sort(nums, start, mid);
-        merge_sort(nums, mid + 1, end);
-
-        merge(nums, start, mid, end);
-    }
-
-    int partition2(vector<int> &nums, int start, int end, int pivot)
-    {
-        while (start <= end)
-        {
-            if (nums[start] < pivot)
-            {
-                start++;
-            }
-            if (nums[end] > pivot)
-            {
-                end--;
-            }
-
-            if (start <= end)
-            {
-                int temp = nums[start];
-                nums[start] = nums[end];
-                nums[end] = temp;
-                start++;
-                end--;
-            }
-        }
-        return start;
-    }
-
-    void quickSort2(vector<int> &nums, int start, int end)
+    void merge_sort(int nums[], int start, int end)
     {
         if (start < end)
         {
-            int pivot = nums[start + (end - start) / 2];
-            int index = partition2(nums, start, end, pivot);
+            int mid = start + (end - start) / 2;
+            merge_sort(nums, start, mid);
+            merge_sort(nums, mid + 1, end);
 
-            quickSort2(nums, start, index - 1);
-            quickSort2(nums, index, end);
+            merge(nums, start, mid, end);
         }
     }
 };
 
 int main()
 {
-    vector<int> nums = {10, 9, 8, 7, 6, 5, 4};
+    vector<int> arr = {5, 4, 3, -10, 2, 1, 100};
+
+    int nums[] = {5, 4, 3, -10, 2, 1, 100};
     Sort srt;
 
-    srt.quickSort2(nums, 0, nums.size() - 1);
+    int n = sizeof(nums) / sizeof(nums[0]);
 
-    for (auto &num : nums)
+    // cout <<  << endl;
+    srt.merge_sort(nums, 0, n - 1);
+
+    for (int i = 0; i < sizeof(nums) / sizeof(nums[i]); i++)
     {
-        cout << num << " ";
+        cout << arr[i] << " ";
     }
-
     cout << endl;
-    // srt.merge_sort(nums, 0, nums.size() - 1);
-
-    // srt.recurBubbleSort(nums, nums.size());
-    // srt.recurInsertionSort(nums, 0, nums.size());
-    // srt.quickSort(nums, 0, nums.size() - 1);
 }

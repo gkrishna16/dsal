@@ -1,1 +1,2 @@
-start + (end - start) / 2
+  cout << arr[i] << endl;
+    
