@@ -1,102 +1,129 @@
+import java.io.*;
+
 class Sorting {
-    // I will write code mainly in java.
-    public static void merge(int nums[], int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
+    // Merge Sort
+    public static void merge(int[] arr, int l, int m, int h) {
+        int n1 = m - l + 1;
+        int n2 = h - m;
 
-        int leftArray[] = new int[n1];
-        int rightArray[] = new int[n2];
+        int L[] = new int[n1];
+        int R[] = new int[n2];
 
-        // populate the first array
-        for (var i = 0; i < n1; i++) {
-            leftArray[i] = nums[left + i];
-        }
-        // populate the second array
-        for (var j = 0; j < n2; j++) {
-            rightArray[j] = nums[mid + 1 + j];
+        for (int i = 0; i < n1; i++) {
+            L[i] = arr[i + l];
         }
 
-        int leftArrIndex = 0;
-        int rightArrIndex = 0;
-        int mergedArrIndex = left;
+        for (int j = 0; j < n2; j++) {
+            R[j] = arr[m + 1 + j];
+        }
 
-        while (leftArrIndex < n1 && rightArrIndex < n2) {
-            if (leftArray[leftArrIndex] < rightArray[rightArrIndex]) {
-                nums[mergedArrIndex] = leftArray[leftArrIndex];
-                leftArrIndex++;
+        int a = 0;
+        int b = 0;
+
+        int k = l;
+        while (a < n1 && b < n2) {
+            if (L[a] < R[b]) {
+                arr[k] = L[a];
+                a++;
+
             } else {
-                nums[mergedArrIndex] = rightArray[rightArrIndex];
-                rightArrIndex++;
+                arr[k] = R[b];
+                b++;
+
             }
-            mergedArrIndex++;
+            k++;
         }
 
-        while (leftArrIndex < n1) {
-            nums[mergedArrIndex] = leftArray[leftArrIndex];
-            leftArrIndex++;
-            mergedArrIndex++;
+        while (a < n1) {
+            arr[k] = L[a];
+            a++;
+            k++;
         }
-        while (rightArrIndex < n2) {
-            nums[mergedArrIndex] = rightArray[rightArrIndex];
-            rightArrIndex++;
-            mergedArrIndex++;
+
+        while (b < n2) {
+            arr[k] = R[b];
+            b++;
+            k++;
         }
 
     }
 
-    public static void mergeSort(int nums[], int start, int end) {
-        if (start < end) {
-            int mid = start + (end - start) / 2;
-            mergeSort(nums, start, mid);
-            mergeSort(nums, mid + 1, end);
-
-            merge(nums, start, mid, end);
+    public static void mergeSort(int arr[], int l, int h) {
+        if (l < h) {
+            int m = l + (h - l) / 2;
+            mergeSort(arr, l, m);
+            mergeSort(arr, m + 1, h);
+            merge(arr, l, m, h);
         }
     }
 
-    public static void quickSort(int nums[], int low, int high) {
-        if (low < high) {
-            // pi is partitioning index, nums[p]
-            // is now at right place
+    public static void quickSort(int arr[], int l, int h) {
 
-            var pi = partition(nums, low, high);
-            // Seperately sort elements before
-            quickSort(nums, low, pi - 1);
-            quickSort(nums, pi + 1, high);
-
+        if (l < h) {
+            int pi = partition(arr, l, h);
+            quickSort(arr, l, pi - 1);
+            quickSort(arr, pi + 1, h);
         }
+
     }
 
-    public static int partition(int[] arr, int low, int high) {
-        // choosing the pivot
-        int pivot = arr[high];
+    public static int partition(int arr[], int l, int h) {
+        int i = l - 1;
+        int pivot = arr[h];
 
-        // Index of the smaller element and indicates.
-        var i = (low - 1);
-        for (int j = low; j <= high - 1; j++) { // The index is high - 1 because the last index is pivot
-            // if current element is smaller than pivot.
-            if (arr[j] < pivot) {
+        for (int j = l; j < h; j++) {
+            if (pivot > arr[j]) {
                 i++;
                 swap(arr, i, j);
             }
-
         }
-        swap(arr, i + 1, high);
+
+        swap(arr, i + 1, h);
         return (i + 1);
     }
 
-    static void swap(int arr[], int i, int j) {
+    public static void swap(int arr[], int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
-    public static void main(String[] args) {
-        int nums[] = { 5, 4, 3, 2, 1 };
-        int mid = 0 + ((nums.length - 1) - 0) / 2;
+    // public static void insertionSort(int arr[]) {
+    // for (int i = 0; i < arr.length; i++) {
+    // int j = i;
+    // while (j > 0 && arr[j - 1] > arr[j]) {
+    // int temp = arr[j];
+    // arr[j] = arr[j - 1];
+    // arr[j - 1] = temp;
+    // j--;
+    // }
+    // }
+    // }
 
-        quickSort(nums, 0, nums.length - 1);
-        for (var i : nums) {
+    public static void insertionSortRecur(int arr[], int i, int n) {
+        if (i == n)
+            return;
+        int j = i;
+        while (j > 0 && arr[j - 1] > arr[j]) {
+            int temp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = temp;
+            j--;
+        }
+        insertionSortRecur(arr, i + 1, n);
+    }
+
+    public static void bubbleSort(int arr[], int n) {
+    }
+
+    public static void main(String args[]) {
+        int arr[] = { 5, 4, 3, 2, 1 };
+        // quickSort(arr, 0, arr.length - 1);
+        // mergeSort(arr, 0, arr.length - 1);
+
+        insertionSortRecur(arr, 0, arr.length);
+
+        for (var i : arr) {
             System.out.print(i + " ");
         }
         System.out.println();
