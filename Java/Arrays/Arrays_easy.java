@@ -1,79 +1,73 @@
+
 //package Java.Arrays;
+import java.lang.Math;
+import java.util.*;
 
 public class Arrays_easy {
+    public List<List<Integer>> threeSum(int[] arr) {
+        // Sort the array
+        Arrays.sort(arr);
+        int n = arr.length;
 
-    static int findLargestElement(int nums[]) {
-        int max = nums[0];
-        for (int i = 0; i < nums.length; i++) {
-            if (max < nums[i]) {
-                max = nums[i];
+        var ans = new ArrayList<List<Integer>>();
+
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && arr[i] == arr[i - 1]) {
+                return;
             }
-        }
-        System.out.println(max);
-        return max;
-    }
 
-    static private int secondSmallest(int[] arr, int n) {
-        if (n < 2) {
-            return -1;
-        }
-        int small = Integer.MAX_VALUE;
-        int second_small = Integer.MAX_VALUE;
-        int i;
-        for (i = 0; i < n; i++) {
-            if (arr[i] < small) {
-                second_small = small;
-                small = arr[i];
-            } else if (arr[i] < second_small && arr[i] != small) {
-                second_small = arr[i];
-
-            }
-        }
-
-        System.out.println("smallest " + small);
-        return second_small;
-    }
-
-    static boolean isSorted(int arr[], int n) {
-        for (int i = 1; i < n; i++) {
-            if (arr[i] < arr[i - 1])
-                return false;
-        }
-
-        return true;
-    }
-
-    public static void isSorted(int nums[]) {
-        for (var i = 0; i < nums.length; i++) {
-            if (nums[i] > nums[i + 1])
-                return false;
-        }
-        return true;
-    }
-
-    public static void quickSort(int nums[]) {
-        for (int i = 1; i < nums.length; i++) {
-            int i = j;
-            while (i > 0 && nums[i] < nums[i - 1]) {
-                int temp = nums[i];
-                nums[i] = nums[i + 1];
-                nums[i + 1] = temp;
-                i--;
+            int j = i + 1, k = n - 1;
+            while (j < k) {
+                int sum = arr[i] + arr[j] + arr[k];
+                if (sum < 0) {
+                    j++;
+                } else if (sum > 0) {
+                    k--;
+                } else {
+                    var temp = new ArrayList<Integer>(Arrays.asList(arr[i], arr[j], arr[k]));
+                    ans.add(temp);
+                    j++;
+                    k--;
+                    // skip the duplicate:
+                    while (j < k && arr[j] == arr[j - 1])
+                        j++;
+                    while (j < k && arr[k] == arr[k - 1])
+                        k--;
+                }
             }
 
         }
+
     }
 
-    public static void main(String[] args) {
-        // int arr[] = { 1, 2, 3, 4, 5, 0 }, n = 6;
-        int nums[] = { 5, .4, 3, 2 };
+    public static int trap(int[] arr) {
+        int n = arr.length;
+        int waterTrapped = 0;
 
-        quickSort(nums);
+        for (int i = 0; i < n; i++) {
+            int j = i;
+            int leftMax = 0, rightMax = 0;
+            // biggest number in the left side
+            while (j < 0) {
+                leftMax = Math.max(leftMax, arr[j]);
+                j--;
+            }
+            j = i;
+            // biggest number in the right side
+            while (j < n) {
+                rightMax = Math.max(rightMax, arr[j]);
+                j++;
+            }
 
-        for (int i : nums) {
-            System.out.println(i);
+            waterTrapped += Math.min(leftMax, rightMax) - arr[i];
         }
 
-        // System.out.println(isSorted(arr, n));
+        return waterTrapped;
+    }
+
+    public static void main(String args[]) {
+
+        System.out.println("a");
+
     }
 }

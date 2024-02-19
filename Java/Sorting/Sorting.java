@@ -1,131 +1,101 @@
 import java.io.*;
+import java.util.*;
 
 class Sorting {
-    // Merge Sort
-    public static void merge(int[] arr, int l, int m, int h) {
+
+    public static void merge(int arr[], int l, int m, int h) {
         int n1 = m - l + 1;
         int n2 = h - m;
 
+        // create temp arrays
         int L[] = new int[n1];
         int R[] = new int[n2];
 
+        // copy data to temp arrays
         for (int i = 0; i < n1; i++) {
-            L[i] = arr[i + l];
+            L[i] = arr[l + i];
         }
 
         for (int j = 0; j < n2; j++) {
             R[j] = arr[m + 1 + j];
         }
 
-        int a = 0;
-        int b = 0;
+        // Merge temp arrays
+        int i = 0, j = 0;
 
+        // Initialize index of merged subrray array
         int k = l;
-        while (a < n1 && b < n2) {
-            if (L[a] < R[b]) {
-                arr[k] = L[a];
-                a++;
 
-            } else {
-                arr[k] = R[b];
-                b++;
-
-            }
-            k++;
-        }
-
-        while (a < n1) {
-            arr[k] = L[a];
-            a++;
-            k++;
-        }
-
-        while (b < n2) {
-            arr[k] = R[b];
-            b++;
-            k++;
-        }
-
-    }
-
-    public static void mergeSort(int arr[], int l, int h) {
-        if (l < h) {
-            int m = l + (h - l) / 2;
-            mergeSort(arr, l, m);
-            mergeSort(arr, m + 1, h);
-            merge(arr, l, m, h);
-        }
-    }
-
-    public static void quickSort(int arr[], int l, int h) {
-
-        if (l < h) {
-            int pi = partition(arr, l, h);
-            quickSort(arr, l, pi - 1);
-            quickSort(arr, pi + 1, h);
-        }
-
-    }
-
-    public static int partition(int arr[], int l, int h) {
-        int i = l - 1;
-        int pivot = arr[h];
-
-        for (int j = l; j < h; j++) {
-            if (pivot > arr[j]) {
+        // sort the arrays
+        while (i < n1 && j < n2) {
+            if (L[i] < R[j]) {
+                arr[k] = L[i];
                 i++;
-                swap(arr, i, j);
+            } else {
+                arr[k] = R[j];
+                j++;
             }
+            k++;
+        }
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+
+    public static void sort(int arr[], int l, int r) {
+        if (l < r) {
+            // Find the middle point
+            int m = l + (r - l) / 2;
+
+            // sort first and second element
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+            // Merge the sorted halves
+            merge(arr, l, m, r);
+        }
+    }
+
+    public static int[] productExceptSelf(int[] arr) {
+        int n = arr.length;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        int[] prod = new int[n];
+
+        left[0] = 1;
+        right[n - 1] = 1;
+
+        for (int i = 1; i < n; i++) {
+            left[i] = left[i - 1] * arr[i - 1];
         }
 
-        swap(arr, i + 1, h);
-        return (i + 1);
-    }
-
-    public static void swap(int arr[], int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    // public static void insertionSort(int arr[]) {
-    // for (int i = 0; i < arr.length; i++) {
-    // int j = i;
-    // while (j > 0 && arr[j - 1] > arr[j]) {
-    // int temp = arr[j];
-    // arr[j] = arr[j - 1];
-    // arr[j - 1] = temp;
-    // j--;
-    // }
-    // }
-    // }
-
-    public static void insertionSortRecur(int arr[], int i, int n) {
-        if (i == n)
-            return;
-        int j = i;
-        while (j > 0 && arr[j - 1] > arr[j]) {
-            int temp = arr[j];
-            arr[j] = arr[j - 1];
-            arr[j - 1] = temp;
-            j--;
+        // fill the right side of the array
+        for (int j = n - 2; j > -1; j--) {
+            right[j] = right[j + 1] * arr[j + 1];
         }
-        insertionSortRecur(arr, i + 1, n);
-    }
 
-    public static void bubbleSort(int arr[], int n) {
+        // fill the prod array
+        for (int i = 0; i < n; i++) {
+            prod[i] = right[i] * left[i];
+        }
+
+        return prod;
+
     }
 
     public static void main(String args[]) {
-        int arr[] = { 5, 4, 3, 2, 1 };
-        // quickSort(arr, 0, arr.length - 1);
-        // mergeSort(arr, 0, arr.length - 1);
+        int arr[] = { 12, 11, 13, 5, 6, 7 };
+        int[] nums = { 1, 2, 3, 4 };
 
-        insertionSortRecur(arr, 0, arr.length);
+        int[] ans = productExceptSelf(nums);
 
-        for (var i : arr) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
+        System.out.println(Arrays.toString(ans));
+
     }
 }

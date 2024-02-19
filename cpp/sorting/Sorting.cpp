@@ -1,6 +1,5 @@
 #include <iostream> // preprocessor directive - before compilation all the files would be copeid
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
@@ -54,6 +53,40 @@ public:
             merge(nums, start, mid, end);
         }
     }
+
+    int partition(vector<int> &nums, int low, int high)
+    {
+        int pivot = nums[high];
+        int i = low - 1;
+
+        for (int j = low; j <= high - 1; j++)
+        {
+            if (pivot > nums[j])
+            {
+                i++;
+                swap(nums, i, j);
+            }
+        }
+
+        swap(nums, i + 1, high);
+        return (i + 1);
+    }
+
+    void quickSort(vector<int> &nums, int low, int high)
+    {
+        if (low < high)
+        {
+            int pi = partition(nums, low, high);
+            quickSort(nums, low, pi - 1);
+            quickSort(nums, pi + 1, high);
+        }
+    }
+    void swap(vector<int> &nums, int i, int j)
+    {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
 };
 
 int main()
@@ -62,15 +95,13 @@ int main()
 
     int nums[] = {5, 4, 3, -10, 2, 1, 100};
     Sort srt;
+    srt.quickSort(arr, 0, arr.size() - 1);
 
-    int n = sizeof(nums) / sizeof(nums[0]);
-
-    // cout <<  << endl;
-    srt.merge_sort(nums, 0, n - 1);
-
-    for (int i = 0; i < sizeof(nums) / sizeof(nums[i]); i++)
+    for (int i = 0; i < arr.size(); i++)
     {
         cout << arr[i] << " ";
     }
     cout << endl;
+
+    return 1;
 }
